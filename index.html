@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Harapan Kita | Company Profile & Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-700">PT. HARAPAN KITA</div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#" class="hover:text-green-600">Beranda</a>
+                <a href="#" class="hover:text-green-600">Tentang Kami</a>
+                <a href="#" class="hover:text-green-600">Marketplace</a>
+                <a href="#" class="hover:text-green-600">Portofolio</a>
+                <a href="#" class="hover:text-green-600">Kontak</a>
+            </div>
+            <button class="md:hidden text-gray-700"><i class="fa fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="relative bg-green-900 text-white py-24 px-6 text-center">
+        <div class="container mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Selamat Datang di PT. Harapan Kita</h1>
+            <p class="text-lg md:text-xl mb-8 opacity-90">Solusi terbaik untuk komoditas berkualitas tinggi dan layanan terpercaya.</p>
+            <div class="flex justify-center gap-4">
+                <a href="#marketplace" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-bold transition">Belanja Sekarang</a>
+                <a href="#profil" class="border border-white hover:bg-white hover:text-green-900 px-8 py-3 rounded-full font-bold transition">Tentang Kami</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-16 container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-12">Mengapa Memilih Kami?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <i class="fa fa-award text-4xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Kualitas Premium</h3>
+                <p class="text-gray-600">Produk kami melewati kontrol kualitas yang ketat sebelum sampai ke tangan Anda.</p>
+            </div>
+            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <i class="fa fa-truck text-4xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Pengiriman Cepat</h3>
+                <p class="text-gray-600">Logistik terintegrasi untuk menjamin kesegaran dan ketepatan waktu pengiriman.</p>
+            </div>
+            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <i class="fa fa-handshake text-4xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Harga Kompetitif</h3>
+                <p class="text-gray-600">Langsung dari sumbernya, memberikan harga terbaik bagi para mitra dan pelanggan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="marketplace" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold">Produk Unggulan</h2>
+                    <p class="text-gray-600">Pilih kategori komoditas terbaik kami</p>
+                </div>
+                <a href="#" class="text-green-700 font-bold hover:underline">Lihat Semua Kategori &rarr;</a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+                    <div class="h-48 bg-gray-300 overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="Produk" class="w-full h-full object-cover group-hover:scale-105 transition">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-green-600 font-bold uppercase">Kategori A</span>
+                        <h4 class="font-bold text-lg mb-2">Nama Produk Utama</h4>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Deskripsi singkat produk yang menjelaskan keunggulan...</p>
+                        <button class="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800 transition">Lihat Detail</button>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">PT. Harapan Kita</h3>
+                <p class="text-sm leading-relaxed">Membangun masa depan melalui distribusi komoditas unggulan dan pemberdayaan mitra lokal.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Hubungi Kami</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fab fa-whatsapp mr-2"></i> +62 812-3456-7890</li>
+                    <li><i class="fa fa-envelope mr-2"></i> info@harapankita.co.id</li>
+                    <li><i class="fa fa-map-marker-alt mr-2"></i> Jl. Utama No. 123, Indonesia</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ikuti Kami</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white"><i class="fab fa-instagram text-2xl"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-linkedin text-2xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
