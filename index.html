@@ -3,110 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT. Harapan Kita FARM | Company Profile & Marketplace</title>
+    <title>HK FARM | Indonesia Agriculture Holding & Export</title>
+    
+    <!-- Google Fonts: SN Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: '#064e3b',
+                        darkbrown: '#451a03',
+                        earthy: '#fef3c7',
+                    },
+                    fontFamily: {
+                        sans: ['"SN Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: "SN Pro", sans-serif;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Hero Slider Implementation */
+        .hero-container {
+            position: relative;
+            overflow: hidden;
+            background-color: #064e3b; /* Fallback */
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+            z-index: 0;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 1;
+        }
+
+        .hero-slide.prev {
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(6, 78, 59, 0.65), rgba(69, 26, 3, 0.75));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .heading-tight {
+            letter-spacing: -0.03em;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #064e3b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-green-700">PT. HARAPAN KITA FARM</div>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#" class="hover:text-green-600">Beranda</a>
-                <a href="#" class="hover:text-green-600">Tentang Kami</a>
-                <a href="#" class="hover:text-green-600">Marketplace</a>
-                <a href="#" class="hover:text-green-600">Portofolio</a>
-                <a href="#" class="hover:text-green-600">Kontak</a>
+    <!-- Header -->
+    <header class="fixed w-full z-50 glass-header border-b border-slate-100">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-emerald rounded-xl flex items-center justify-center text-white font-bold text-xl">H</div>
+                <div class="flex flex-col leading-none">
+                    <span class="text-xl font-extrabold tracking-tighter text-emerald uppercase">HK FARM</span>
+                    <span class="text-[9px] tracking-[0.3em] text-slate-400 font-bold uppercase">Agriculture Holding</span>
+                </div>
             </div>
-            <button class="md:hidden text-gray-700"><i class="fa fa-bars"></i></button>
-        </div>
-    </nav>
 
-    <header class="relative bg-green-900 text-white py-24 px-6 text-center">
-        <div class="container mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Selamat Datang di PT. Harapan Kita Farm</h1>
-            <p class="text-lg md:text-xl mb-8 opacity-90">Solusi terbaik untuk komoditas berkualitas tinggi dan layanan terpercaya.</p>
-            <div class="flex justify-center gap-4">
-                <a href="#marketplace" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-bold transition">Belanja Sekarang</a>
-                <a href="#profil" class="border border-white hover:bg-white hover:text-green-900 px-8 py-3 rounded-full font-bold transition">Tentang Kami</a>
-            </div>
+            <nav class="hidden md:flex items-center gap-10 font-semibold">
+                <a href="#about" class="nav-link text-slate-600 hover:text-emerald transition-colors text-xs uppercase tracking-widest">Tentang Kami</a>
+                <a href="#commodities" class="nav-link text-slate-600 hover:text-emerald transition-colors text-xs uppercase tracking-widest">Komoditas Utama</a>
+                <a href="#process" class="nav-link text-slate-600 hover:text-emerald transition-colors text-xs uppercase tracking-widest">Standar Mutu</a>
+                <a href="#export" class="nav-link text-slate-600 hover:text-emerald transition-colors text-xs uppercase tracking-widest">Ekspor</a>
+                
+                <div class="flex items-center border-l border-slate-200 pl-10 gap-3">
+                    <button class="text-emerald font-bold text-xs">ID</button>
+                    <span class="text-slate-300">|</span>
+                    <button class="text-slate-400 hover:text-emerald text-xs">EN</button>
+                </div>
+                
+                <a href="#inquiry" class="bg-emerald text-white px-7 py-2.5 rounded-full font-bold hover:bg-emerald/90 hover:scale-105 transition-all shadow-lg shadow-emerald/20 text-xs uppercase tracking-wider">
+                    B2B Inquiry
+                </a>
+            </nav>
+
+            <button class="md:hidden text-emerald text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <section class="py-16 container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-12">Mengapa Memilih Kami?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
-                <i class="fa fa-award text-4xl text-green-600 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Kualitas Premium</h3>
-                <p class="text-gray-600">Produk kami melewati kontrol kualitas yang ketat sebelum sampai ke tangan Anda.</p>
+    <!-- Hero Section with Slideshow -->
+    <section class="hero-container min-h-screen flex items-center justify-center text-center text-white px-4">
+        <!-- Background Slides -->
+        <div id="hero-slider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1470087167738-6aa485ff65dc?q=80&w=1171&auto=format&fit=crop')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1672851612794-6687bf0bf1a3?q=80&w=1170&auto=format&fit=crop')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1654815439629-5e93cb7f74a1?q=80&w=1170&auto=format&fit=crop')"></div>
+        </div>
+        
+        <!-- Constant Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Content -->
+        <div class="max-w-5xl hero-content">
+            <span class="inline-block px-5 py-1.5 border border-white/20 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-10 bg-white/5">
+                PT. HK FARM INDONESIA &bull; Established 2026
+            </span>
+            <h1 class="text-6xl md:text-[7rem] font-black mb-10 leading-[1.05] heading-tight">The Best Harvest for the Global Market</h1>
+            <p class="text-lg md:text-2xl text-white/80 mb-14 max-w-3xl mx-auto font-medium leading-relaxed">
+                Kami adalah holding agrikultur yang fokus pada pengelolaan dan distribusi hasil perkebunan terbaik Indonesia untuk pasar internasional.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#inquiry" class="bg-white text-emerald px-12 py-5 rounded-2xl font-black text-lg hover:bg-emerald hover:text-white transition-all shadow-2xl hover:-translate-y-1">
+                    Hubungi Tim Ekspor
+                </a>
+                <a href="#commodities" class="bg-white/10 border border-white/20 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-white/20 transition-all backdrop-blur-md">
+                    Jelajahi Komoditas
+                </a>
             </div>
-            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
-                <i class="fa fa-truck text-4xl text-green-600 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Pengiriman Cepat</h3>
-                <p class="text-gray-600">Logistik terintegrasi untuk menjamin kesegaran dan ketepatan waktu pengiriman.</p>
-            </div>
-            <div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition">
-                <i class="fa fa-handshake text-4xl text-green-600 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Harga Kompetitif</h3>
-                <p class="text-gray-600">Langsung dari sumbernya, memberikan harga terbaik bagi para mitra dan pelanggan.</p>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            <div class="w-12 h-1 bg-white/20 rounded-full overflow-hidden"><div id="progress-0" class="h-full bg-white w-0 transition-all duration-[3000ms] ease-linear"></div></div>
+            <div class="w-12 h-1 bg-white/20 rounded-full overflow-hidden"><div id="progress-1" class="h-full bg-white w-0 transition-all duration-[3000ms] ease-linear"></div></div>
+            <div class="w-12 h-1 bg-white/20 rounded-full overflow-hidden"><div id="progress-2" class="h-full bg-white w-0 transition-all duration-[3000ms] ease-linear"></div></div>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="py-20 bg-white border-b border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div class="scroll-reveal">
+                    <div class="text-6xl font-black text-emerald mb-3 heading-tight tracking-tighter">500+</div>
+                    <div class="text-slate-400 text-[10px] uppercase tracking-[0.25em] font-black">Mitra Petani</div>
+                </div>
+                <div class="scroll-reveal" style="transition-delay: 0.1s">
+                    <div class="text-6xl font-black text-emerald mb-3 heading-tight tracking-tighter">1.2k</div>
+                    <div class="text-slate-400 text-[10px] uppercase tracking-[0.25em] font-black">Tonase Tahunan</div>
+                </div>
+                <div class="scroll-reveal" style="transition-delay: 0.2s">
+                    <div class="text-6xl font-black text-emerald mb-3 heading-tight tracking-tighter">12+</div>
+                    <div class="text-slate-400 text-[10px] uppercase tracking-[0.25em] font-black">Negara Tujuan</div>
+                </div>
+                <div class="scroll-reveal" style="transition-delay: 0.3s">
+                    <div class="text-6xl font-black text-emerald mb-3 heading-tight tracking-tighter">4</div>
+                    <div class="text-slate-400 text-[10px] uppercase tracking-[0.25em] font-black">Komoditas Unggulan</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="marketplace" class="bg-gray-100 py-16">
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-white">
         <div class="container mx-auto px-6">
-            <div class="flex justify-between items-end mb-10">
-                <div>
-                    <h2 class="text-3xl font-bold">Produk Unggulan</h2>
-                    <p class="text-gray-600">Pilih kategori komoditas terbaik kami</p>
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="md:w-1/2 scroll-reveal">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1776815793950-5785ed2fc2c8?q=80&w=735&auto=format&fit=crop" class="rounded-[3rem] shadow-2xl w-full object-cover aspect-[4/5]" alt="Foto Perkebunan HK Farm">
+                        <div class="absolute inset-0 rounded-[3rem] ring-1 ring-inset ring-black/10"></div>
+                    </div>
                 </div>
-                <a href="#" class="text-green-700 font-bold hover:underline">Lihat Semua Kategori &rarr;</a>
+                <div class="md:w-1/2 scroll-reveal" style="transition-delay: 0.2s">
+                    <span class="text-emerald font-black text-xs uppercase tracking-[0.4em] block mb-6">Tentang Kami</span>
+                    <h2 class="text-5xl font-extrabold text-darkbrown mb-8 heading-tight">Dedikasi Untuk Hasil Bumi Nusantara</h2>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed font-medium">
+                        PT. HK FARM INDONESIA berdiri sebagai jembatan utama antara kekayaan alam perkebunan Indonesia dengan kebutuhan pasar global. Kami mengelola secara profesional empat hasil bumi utama: Biji Kopi Robusta, Cokelat (Kakao), Kacang Mete, dan Cengkeh.
+                    </p>
+                    <p class="text-slate-600 text-lg mb-10 leading-relaxed font-medium">
+                        Melalui pemberdayaan petani lokal dan standarisasi mutu yang ketat, kami menjamin setiap komoditas yang kami kirimkan memiliki kualitas premium yang memenuhi kriteria ekspor internasional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commodities Section -->
+    <section id="commodities" class="py-32 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mb-24 text-center mx-auto">
+                <span class="text-emerald font-black text-xs uppercase tracking-[0.4em] block mb-6">Main Commodities</span>
+                <h2 class="text-5xl md:text-7xl font-extrabold text-darkbrown mb-8 heading-tight">4 Hasil Bumi Utama</h2>
+                <p class="text-slate-500 font-medium">Fokus tunggal kami pada komoditas terpilih untuk menjamin kualitas terbaik.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-10">
+                <!-- Biji Kopi Robusta Rempek NTB -->
+                <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 scroll-reveal">
+                    <div class="h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561766858-62033ae40ec3?q=80&w=1170&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Robusta Green Coffee Beans Rempek NTB">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-extrabold mb-4 text-darkbrown tracking-tight leading-tight">Robusta Green Coffee Beans, Rempek NTB</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed font-medium">Biji kopi Robusta pilihan dengan flavor notes chocolate, brown sugar, cereally dan spicy-chili.</p>
+                        <div class="flex gap-2">
+                            <span class="bg-emerald/5 text-emerald text-[9px] uppercase font-black px-3 py-1.5 rounded-lg tracking-widest border border-emerald/10">Grade 1 Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Coklat / Kakao -->
+                <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 scroll-reveal" style="transition-delay: 0.1s">
+                    <div class="h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493925410384-84f842e616fb?q=80&w=765&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Biji Cokelat Premium">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-extrabold mb-4 text-darkbrown tracking-tight">Cokelat (Kakao)</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed font-medium">Biji kakao hasil fermentasi sempurna, siap menjadi bahan baku cokelat berkualitas dunia.</p>
+                        <div class="flex gap-2">
+                            <span class="bg-emerald/5 text-emerald text-[9px] uppercase font-black px-3 py-1.5 rounded-lg tracking-widest border border-emerald/10">Fermented</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kacang Mete -->
+                <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 scroll-reveal" style="transition-delay: 0.2s">
+                    <div class="h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600189020840-e9918c25269d?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Kacang Mete Kualitas Ekspor">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-extrabold mb-4 text-darkbrown tracking-tight">Kacang Mete</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed font-medium">Kacang mete berkualitas tinggi yang diproses dengan higienis untuk menjaga kemurnian rasa.</p>
+                        <div class="flex gap-2">
+                            <span class="bg-emerald/5 text-emerald text-[9px] uppercase font-black px-3 py-1.5 rounded-lg tracking-widest border border-emerald/10">W240/W320</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cengkeh -->
+                <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 scroll-reveal" style="transition-delay: 0.3s">
+                    <div class="h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1612882910661-e44b25c6e79b?q=80&w=687&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Cengkeh Kering Indonesia">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-extrabold mb-4 text-darkbrown tracking-tight">Cengkeh</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed font-medium">Cengkeh kering kualitas ekspor dengan kadar minyak atsiri optimal bagi industri global.</p>
+                        <div class="flex gap-2">
+                            <span class="bg-emerald/5 text-emerald text-[9px] uppercase font-black px-3 py-1.5 rounded-lg tracking-widest border border-emerald/10">High Oil Content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Focus -->
+    <section id="process" class="py-32 bg-emerald text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl scroll-reveal">
+                <span class="text-earthy font-black uppercase tracking-[0.4em] text-xs mb-8 block">Our Process</span>
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-10 leading-tight heading-tight">Satu Atap Untuk Standarisasi Global.</h2>
+                <p class="text-slate-200 mb-16 text-xl font-light leading-relaxed max-w-2xl">
+                    HK FARM memastikan rantai pasok dari kebun hingga pengiriman tetap terjaga. Kami melakukan seleksi ketat di gudang terintegrasi kami untuk memastikan standar ekspor terpenuhi.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                        <div class="w-14 h-14 bg-earthy/20 rounded-2xl flex items-center justify-center text-earthy mb-6">
+                            <i class="fas fa-check-double text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Quality Sorting</h4>
+                        <p class="text-sm text-slate-300">Pemisahan manual dan otomatis untuk membuang cacat produksi (defect).</p>
+                    </div>
+                    <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                        <div class="w-14 h-14 bg-earthy/20 rounded-2xl flex items-center justify-center text-earthy mb-6">
+                            <i class="fas fa-temperature-low text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Moisture Control</h4>
+                        <p class="text-sm text-slate-300">Pengaturan kadar air yang tepat agar produk tahan lama selama pengiriman laut.</p>
+                    </div>
+                    <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                        <div class="w-14 h-14 bg-earthy/20 rounded-2xl flex items-center justify-center text-earthy mb-6">
+                            <i class="fas fa-box-open text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Bulk Packaging</h4>
+                        <p class="text-sm text-slate-300">Pengemasan standar ekspor (Gunny Bag/Vacuum) untuk menjaga integritas produk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="inquiry" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex flex-col md:flex-row gap-20">
+                <div class="md:w-1/2 scroll-reveal">
+                    <span class="text-emerald font-black text-xs uppercase tracking-[0.4em] block mb-8">Export Collaboration</span>
+                    <h2 class="text-5xl md:text-7xl font-extrabold text-darkbrown mb-10 heading-tight">Bermitra Dengan HK FARM</h2>
+                    <p class="text-slate-500 text-lg mb-16 leading-relaxed font-medium">
+                        Kami melayani pemesanan skala besar (B2B) untuk kebutuhan industri pangan, farmasi, dan distributor luar negeri.
+                    </p>
+                    
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-8 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-emerald text-2xl group-hover:bg-emerald group-hover:text-white transition-all duration-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-[10px] uppercase tracking-widest font-black mb-1">Email Ekspor</h4>
+                                <p class="text-xl font-extrabold text-darkbrown tracking-tight">export@hkfarm.id</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-8 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-emerald text-2xl group-hover:bg-emerald group-hover:text-white transition-all duration-500">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-[10px] uppercase tracking-widest font-black mb-1">Logistik</h4>
+                                <p class="text-xl font-extrabold text-darkbrown tracking-tight">Pengiriman FOB / CIF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 scroll-reveal" style="transition-delay: 0.2s">
+                    <div class="bg-slate-50 p-12 md:p-16 rounded-[3rem] border border-slate-100">
+                        <form id="b2bForm" class="space-y-10">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Nama Lengkap</label>
+                                    <input type="text" class="w-full bg-transparent border-b-2 border-slate-200 focus:border-emerald pb-4 text-lg font-bold outline-none transition-all placeholder:text-slate-300" placeholder="Nama Anda" required>
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Negara Tujuan</label>
+                                    <input type="text" class="w-full bg-transparent border-b-2 border-slate-200 focus:border-emerald pb-4 text-lg font-bold outline-none transition-all placeholder:text-slate-300" placeholder="Contoh: Jerman" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Pilih Komoditas</label>
+                                <select class="w-full bg-transparent border-b-2 border-slate-200 focus:border-emerald pb-4 text-lg font-bold outline-none transition-all cursor-pointer">
+                                    <option>Robusta Green Coffee Beans (Rempek NTB)</option>
+                                    <option>Biji Kakao (Cokelat)</option>
+                                    <option>Kacang Mete</option>
+                                    <option>Cengkeh Kering</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Estimasi Volume (Ton)</label>
+                                <input type="number" class="w-full bg-transparent border-b-2 border-slate-200 focus:border-emerald pb-4 text-lg font-bold outline-none transition-all placeholder:text-slate-300" placeholder="0" required>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-emerald text-white py-6 rounded-[1.5rem] font-black text-lg hover:bg-emerald/90 transition-all shadow-xl shadow-emerald/20 flex items-center justify-center gap-4 group">
+                                Kirim Permintaan <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald py-24 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-20 mb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-10">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-emerald font-black text-2xl">H</div>
+                        <span class="text-3xl font-black tracking-tighter uppercase">HK FARM</span>
+                    </div>
+                    <p class="text-emerald-100 text-sm leading-relaxed mb-10 font-medium">
+                        Holding agrikultur terpercaya Indonesia. Fokus pada distribusi hasil kebun berkualitas tinggi untuk kesejahteraan petani dan kepuasan pasar dunia.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white hover:text-emerald transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white hover:text-emerald transition-all"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-black mb-10 uppercase tracking-[0.2em] text-[10px] text-earthy">Sitemap</h5>
+                    <ul class="space-y-6 text-sm font-bold text-emerald-50">
+                        <li><a href="#about" class="hover:text-earthy transition-all">Tentang Kami</a></li>
+                        <li><a href="#commodities" class="hover:text-earthy transition-all">Komoditas</a></li>
+                        <li><a href="#process" class="hover:text-earthy transition-all">Proses Mutu</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-black mb-10 uppercase tracking-[0.2em] text-[10px] text-earthy">Bantuan</h5>
+                    <ul class="space-y-6 text-sm font-bold text-emerald-50">
+                        <li><a href="#" class="hover:text-earthy transition-all">Export Guide</a></li>
+                        <li><a href="#" class="hover:text-earthy transition-all">FAQ</a></li>
+                        <li><a href="#" class="hover:text-earthy transition-all">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-black mb-10 uppercase tracking-[0.2em] text-[10px] text-earthy">Lokasi</h5>
+                    <p class="text-xs mb-4 text-emerald-100 font-bold uppercase">Kantor Operasional:</p>
+                    <p class="text-sm text-slate-300 font-medium mb-8">Mataram, Nusa Tenggara Barat,<br>Indonesia</p>
+                </div>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-white rounded-lg overflow-hidden shadow-sm group">
-                    <div class="h-48 bg-gray-300 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1561766858-62033ae40ec3?q=80&w=400&h=300&auto=format&fit=crop"
-                        alt="Kopi Robusta"
-                        class="w-full h-full object-cover group-hover:scale-105 transition">
-                    </div>
-                    <div class="p-4">
-                        <span class="text-xs text-green-600 font-bold uppercase">Green Coffee Beans</span>
-                        <h4 class="font-bold text-lg mb-2">Robusta Green Coffee Beans, Rempek NTB</h4>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Flavor notes: Chocolate, brown sugar, Cereally & Spicy-Chili</p>
-                        <button class="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800 transition">Lihat Detail</button>
-                    </div>
-                </div>
-                </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-                <h3 class="text-white text-xl font-bold mb-4">PT. Harapan Kita</h3>
-                <p class="text-sm leading-relaxed">Membangun masa depan melalui distribusi komoditas unggulan dan pemberdayaan mitra lokal.</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">Hubungi Kami</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><i class="fab fa-whatsapp mr-2"></i> +62 811-1111-1111</li>
-                    <li><i class="fa fa-envelope mr-2"></i> info@harapankita.co.id</li>
-                    <li><i class="fa fa-map-marker-alt mr-2"></i> Kekait, Kec. Gunungsari, Kabupaten Lombok Barat, Nusa Tenggara Barat. 83351</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">Ikuti Kami</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-white"><i class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
-                    <a href="#" class="hover:text-white"><i class="fab fa-linkedin text-2xl"></i></a>
+            <div class="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-200">
+                <p>&copy; 2026 PT. HK FARM INDONESIA. All Rights Reserved.</p>
+                <div class="flex gap-10">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Compliance</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6281234567890" class="fixed bottom-8 right-8 bg-[#25d366] text-white w-16 h-16 rounded-[1.25rem] flex items-center justify-center text-3xl shadow-2xl hover:scale-110 hover:-rotate-3 active:scale-95 transition-all z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Hero Slider Logic
+        const slides = document.querySelectorAll('.hero-slide');
+        const progressBars = document.querySelectorAll('[id^="progress-"]');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateProgress(index, start) {
+            if(start) {
+                progressBars[index].style.width = '100%';
+            } else {
+                progressBars[index].style.transition = 'none';
+                progressBars[index].style.width = '0%';
+                setTimeout(() => {
+                    progressBars[index].style.transition = 'width 3000ms linear';
+                }, 50);
+            }
+        }
+
+        function nextSlide() {
+            // Remove active status from current
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('prev');
+            updateProgress(currentSlide, false);
+
+            // Update index
+            currentSlide = (currentSlide + 1) % totalSlides;
+
+            // Setup new active slide
+            slides[currentSlide].classList.remove('prev');
+            slides[currentSlide].classList.add('active');
+            updateProgress(currentSlide, true);
+
+            // Cleanup prev class after animation
+            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+            setTimeout(() => {
+                slides[prevIndex].classList.remove('prev');
+            }, 1200);
+        }
+
+        // Initialize first progress
+        window.onload = () => {
+            updateProgress(0, true);
+            setInterval(nextSlide, 3000);
+        };
+
+        // Scroll Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Form Logic
+        document.getElementById('b2bForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Inquiry Sent Successfully';
+                btn.classList.replace('bg-emerald', 'bg-green-600');
+                this.reset();
+            }, 1500);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
